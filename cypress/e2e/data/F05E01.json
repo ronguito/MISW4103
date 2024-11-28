@@ -1,0 +1,62 @@
+[
+    {
+        "description": "Crear un nuevo tag con nombre válido ",
+        "strategy": "priori", 
+        "data": "Mi primera tag"
+    },
+    {
+        "description": "1- Crear un nuevo tag con nombre con datos validos",
+        "strategy": "pool", 
+        "data": ["Tag de blog","Página de articulos","Tag de solicitudes","Tag social"]
+    },
+    {
+        "description": "3- Crear un nuevo tag con nombre con datos validos",
+        "strategy": "random", 
+        "data": "commerce.productName"
+    },
+    {
+        "description": "4- Crear un nuevo tag con nombre con datos in validos",
+        "strategy": "priori", 
+        "data": "$$$$"
+    },
+    {
+        "description": "5- Crear un nuevo tag con nombre con datos in validos",
+        "strategy": "pool", 
+        "data": ["###", "@@@", "??","////","tag . **"]
+    },
+    {
+        "description": "6- Crear un nuevo tag con nombre con datos in validos",
+        "strategy": "random", 
+        "data": "string.alphanumeric"
+    },
+    {
+        "description": "7- Crear un nuevo tag con nombre con datos numericos",
+        "strategy": "priori", 
+        "data": "987456321"
+    },
+    {
+        "description": "8- Crear un nuevo tag con nombre con datos numericos",
+        "strategy": "pool", 
+        "data": ["123577", "-23456", "4 tag de 1"]
+    },
+    {
+        "description": "9- Crear un nuevo tag con nombre con datos numericos",
+        "strategy": "random", 
+        "data": "number.int"
+    },
+    {
+        "description": "10- Crear un nuevo tag con nombre corto",
+        "strategy": "priori", 
+        "data": "a"
+    },
+    {
+        "description": "11- Crear un nuevo tag con nombre corto",
+        "strategy": "pool", 
+        "data": [".", "s*", " "]
+    },
+    {
+        "description": "12- Crear un nuevo tag con nombre corto",
+        "strategy": "random", 
+        "data": "string.alphanumeric"
+    }
+]

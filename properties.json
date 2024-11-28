@@ -1,0 +1,13 @@
+{
+    "UserName": "admin@redfox.com.co",
+    "UserPass": "Admin123++",
+    "Host": "http://localhost",
+    "Port": 2345,
+    "UrlPublic" : "",
+    "UrlLogin": "/ghost/#/signin",
+    "UrlPost": "/ghost/#/posts",
+    "UrlTag": "/ghost/#/tags",
+    "UrlPage": "/ghost/#/pages",
+    "UrlMember": "/ghost/#/members",
+    "Results": "./results"
+}
