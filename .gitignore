@@ -1,0 +1,6 @@
+/node_modules
+/results
+/cypress/reports
+/cypress/screenshots
+/package-lock.json
+/.DS_Store
