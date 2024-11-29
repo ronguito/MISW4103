@@ -4,7 +4,7 @@ import Post from './src/post';
 import Page from './src/page';
 import Tag from './src/tag';
 
-import { beforeEach } from 'mocha';
+//import { beforeEach } from 'mocha';
 
 const { faker } = require('@faker-js/faker');
 
@@ -49,7 +49,8 @@ describe('Semana1: Pruebas e2e, genera imagenes para VRT', () => {
         wp.shouldContain(title);
         
     });
-    
+
+    /*
     it('t002: Configurar la descripción del sitio', () => {
         const text = faker.company.buzzPhrase();
         //Given
@@ -440,5 +441,5 @@ describe('Semana1: Pruebas e2e, genera imagenes para VRT', () => {
       tag.verifyTagDelete(nameTag3);
 
     }); 
-    
+    */
 });

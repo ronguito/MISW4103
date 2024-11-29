@@ -2,7 +2,7 @@
     "UserName": "admin@redfox.com.co",
     "UserPass": "Admin123++",
     "Host": "http://localhost",
-    "Port": 2345,
+    "Port": 2368,
     "UrlPublic" : "",
     "UrlLogin": "/ghost/#/signin",
     "UrlPost": "/ghost/#/posts",

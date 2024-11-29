@@ -4,8 +4,8 @@ const fs = require('fs');
 
 const { viewportHeight, viewportWidth, browsers, options } = config;
 
-
 const arregloNombre = new Array();
+
 async function executeTest(){
     
     let resultInfo = {}
@@ -14,35 +14,44 @@ async function executeTest(){
     if(!fs.existsSync('./results/compare')){
         fs.mkdirSync('./results/compare', { recursive: true });
     }
+
+    if(!fs.existsSync('./results/cypress')){
+      fs.mkdirSync('./results/cypress', { recursive: true });
+    }
     
     const folders = fs.readdirSync("./results/cypress");
     console.log(folders);
-    return;
+    const [f1,f2] = folders;
+    if(f1==undefined || f2==undefined){
+      console.log("No se encontro carpetas validas para la regresion");
+      return;
+    }
     
-    const base = fs.readdirSync("./results/cypress/")
-    const rc = fs.readdirSync("./results/cypress")
-    for (let i = 0; i < base.length; i++) {
+    const base1 = fs.readdirSync("./results/cypress/" + f1)
+    const base2 = fs.readdirSync("./results/cypress/" + f2)
+    for (let i = 0; i < base1.length; i++) {
 
-        ss45 = base[i];
-        ss68 = false;
+        foto1 = base1[i];
+        foto2 = false;
         
-        for (let j = 0; j < rc.length; j++) {
-            if(rc[j]==ss45){
-                ss68=rc[j];
-                rc.splice(j, 1);
-                console.log("Archivo:", ss68);
+        for (let j = 0; j < base2.length; j++) {
+            if(base2[j]==foto1){
+                foto2=base2[j];
+                base2.splice(j, 1);
+                console.log("Archivo:", foto2);
                 break;
             }
         }
-        if(!ss68) { console.log("No encontrado pareja:", ss45); continue; }
-        arregloNombre.push(ss68.trim());
+        if(!foto2) { console.log("No encontrado pareja:", ss45); continue; }
+        arregloNombre.push({"name": foto2.trim(),"f1":f1,"f2":f2});
+
         const data = await compareImages(
-            fs.readFileSync(`./results/kraken/2345/${ss45}`),
-            fs.readFileSync(`./results/kraken/2368/${ss68}`),
+            fs.readFileSync(`./results/cypress/${f1}/${foto1}`),
+            fs.readFileSync(`./results/cypress/${f2}/${foto2}`),
             options
         );
 
-        resultInfo[ss68.trim()] = {
+        resultInfo[foto2.trim()] = {
             isSameDimensions: data.isSameDimensions,
             dimensionDifference: data.dimensionDifference,
             rawMisMatchPercentage: data.rawMisMatchPercentage,
@@ -51,11 +60,11 @@ async function executeTest(){
             analysisTime: data.analysisTime
         }
 
-        fs.writeFileSync(`./results/kraken/compare/${ss68}`, data.getBuffer());
+        fs.writeFileSync(`./results/compare/${foto2}`, data.getBuffer());
         
     }
-    fs.writeFileSync(`./results/kraken/index.html`, createReport(datetime, resultInfo));
-    fs.copyFileSync('./index.css', `./results/kraken/index.css`);
+    fs.writeFileSync(`./results/index.html`, createReport(datetime, resultInfo));
+
     console.log('------------------------------------------------------------------------------------');
     console.log("Execution finished. Check the report under the results folder");
     console.log(arregloNombre);
@@ -69,23 +78,23 @@ function browser(b, info){
 
     return `<div class=" browser" id="test0">
     <div class=" btitle">
-        <h2>Prueba: ${b}</h2>
+        <h2>Prueba: ${b.name}</h2>
         <p>Data: ${JSON.stringify(info)}</p>
     </div>
     <div class="imgline">
       <div class="imgcontainer">
-        <span class="imgname">Reference</span>
-        <img class="img2" src="../kraken/2368/${b}" id="refImage" label="Reference">
+        <span class="imgname">Navegador ${b.f1}</span>
+        <img class="img2" src="./cypress/${b.f1}/${b.name}" id="refImage" label="Reference">
       </div>
       <div class="imgcontainer">
-        <span class="imgname">Test</span>
-        <img class="img2" src="../kraken/2345/${b}" id="testImage" label="Test">
+        <span class="imgname">Navegador ${b.f2}</span>
+        <img class="img2" src="./cypress/${b.f2}/${b.name}" id="testImage" label="Test">
       </div>
     </div>
     <div class="imgline">
       <div class="imgcontainer">
         <span class="imgname">Diff</span>
-        <img class="imgfull" src="../kraken/compare/${b}".png" id="diffImage" label="Diff">
+        <img class="imgfull" src="./compare/${b.name}".png" id="diffImage" label="Diff">
       </div>
     </div>
   </div>`
@@ -95,16 +104,14 @@ function createReport(datetime, resInfo){
     return `
     <html>
         <head>
-            <title>  Reporte de comparación de la verión 5.96 y 4.5 de Ghost </title>
-            <link href="index.css" type="text/css" rel="stylesheet">
+            <title>  Reporte de regresion Visual Ghost </title>
+            <link href="../index.css" type="text/css" rel="stylesheet">
         </head>
         <body>
-            <h1>Reporte de comparación de la verión 5.96 y 5.4 de Ghost con la ejecución de pruebas automatizadas con Kraken 
-                 
-            </h1>
+            <h1>Reporte de regresion Visual Ghost </h1>
             <p>Executed: ${datetime}</p>
             <div id="visualizer">
-            ${arregloNombre.map(b=>browser(b, resInfo[b]))}
+            ${arregloNombre.map(b=>browser(b, resInfo[b.name]))}
             </div>
         </body>
     </html>`
