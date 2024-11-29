@@ -1,4 +1,5 @@
 import Webpage from './src/webpage';
+const config = Cypress.env('config');
 
 describe('Prueba exploratoria automatizada - Monkey', function() {
 
@@ -13,7 +14,7 @@ describe('Prueba exploratoria automatizada - Monkey', function() {
 
     it('t000 - Exploracion del sistema administrativo de Ghost', function() {
         cy.wait(1000);
-        randomEvent(10);
+        randomEvent(50);
     })
 
 })
@@ -56,9 +57,10 @@ function randomElement(monkeysLeft, element) {
 
 function randomEvent(eventsLeft) {
 
-	var elements = ['a','select','input[type="text"]','button'];
-	const eventType = getRandomInt(0, 4); 
-	randomElement(0,elements[eventType]);
+	//var elements = ['a','select','input[type="text"]','button'];
+    var elements = ['a'];
+	//const eventType = getRandomInt(0, 4); 
+	randomElement(0,'a');
     if (eventsLeft > 0) {
 		 cy.wait(1000);
         randomEvent(eventsLeft - 1);
