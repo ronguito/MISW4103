@@ -59,9 +59,9 @@ properties.json
 
 ```
 
-Vrt: se usa para seleccionar el modo de comparacion para los test de regresion visual, si desea que haga por navegados dejar vacio, si desea que se haga por la version del programa, esta se hace de acuerdo al puerto asignado, en ese caso aigne el valor "port" a la variable Vrt.
+Vrt: se usa para seleccionar el modo de comparacion para los test de regresion visual, si desea que se realice por nombre de navegador dejar vacio este campo, si desea que se realice por la version del sistema Ghost digite el valor "port" a la variable Vrt. La versiones diferentes se deben ejecutar en puertos diferentes.
 
-Iterations: Es el numero de iteraciones que se realizaran en las pruebas exploratorias.
+Iterations: Es el numero de iteraciones que se realizaran en las pruebas exploratorias automatizadas.
 
 - Ejecucion
 
