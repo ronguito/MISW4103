@@ -13,7 +13,8 @@ el comportamiento de la interfaz de usuario.
 ## Prerequisitos
 
 - Contar con una instalacion de Ghost de manera local.
-- Haber configurado manualmente una cuenta en ghost
+- Haber configurado manualmente una cuenta en ghost.
+- Tener conocimientos minimos de la interfaz interactiva de cypress.
 
 ## Instalación de las pruebas
 
@@ -59,34 +60,35 @@ properties.json
 
 ```
 
-Vrt: se usa para seleccionar el modo de comparacion para los test de regresion visual, si desea que haga por navegados dejar vacio, si desea que se haga por la version del programa, esta se hace de acuerdo al puerto asignado, en ese caso aigne el valor "port" a la variable Vrt.
+Vrt: se usa para seleccionar el modo de comparacion para los test de regresion visual, si desea que se realice por nombre de navegador dejar vacio este campo, si desea que se realice por la version del sistema Ghost digite el valor "port" a la variable Vrt. La versiones diferentes se deben ejecutar en puertos diferentes.
 
-Iterations: Es el numero de iteraciones que se realizaran en las pruebas exploratorias.
+Iterations: Es el numero de iteraciones que se realizaran en las pruebas exploratorias automatizadas.
 
 - Ejecucion
 
 Para las diferentes pruebas se codificaron los siguientes escripst de cypress.
 
-1. s1-t1-aet.cy.js -> Pruebas exploratorias
-2. s1-t2-e2e.cy.js -> Pruebas de extremo a extremo
-3. s1-t3-vrt.cy.js -> Pruebas de regresion visual
-4. s1-t4-dvt.cy.js -> Pruebas de validacion de datos
+| Tipo de Prueba                 | Script          |
+| ------------------------------ | --------------- |
+| Pruebas exploratorias          | s1-t1-aet.cy.js |
+| Pruebas de extremo a extremo   | s1-t2-e2e.cy.js |
+| Pruebas de regresion visual    | s1-t3-vrt.cy.js |
+| Pruebas de validacion de datos | s1-t4-dvt.cy.js |
 
-Las pruebas se puede ejecutar de dos modos diferentes, el modo intercativo y el modo headless, si ejecuta las pruebas en modo interactivo debe seleccionar el script que desea ejecutar en la ventana de la herramienta de pruebas.
+Las pruebas se puede ejecutar de dos modos diferentes, el modo interactivo y el modo headless, si ejecuta las pruebas en modo interactivo debe seleccionar el script que desea ejecutar en la ventana de la herramienta de pruebas.
 Si ejecuta la prueba en modo headless esta corre todos los scripts configurados.
 
 ```bash
 //Ejecutar las pruebas en modo interactivo con
-npx cypress open
+cypress open
 
 //Ejecutar las pruebas en modo headless con
-npx cypress run.
+cypress run.
 ```
 
 ## Ejecución test de regresion visual
 
-- Requisitos:
-  El test de regresion visual se puede realizar de dos forma, ya sea por navegador, o por la version de la aplicacion.
+El test de regresion visual se puede realizar de dos forma, ya sea por navegador, o por la version de la aplicacion.
 
 Si desea hacer la prueba por el navegador deje vacio la variable "Vrt" del archivo de configuracion properties. Luego ejecute el test en modo interactivo, realice la prueba en el primer navegador y cuando termine realice la prueba en el segundo navegador.
 
@@ -94,7 +96,7 @@ Si desea hacer la prueba por version, modifique el valor de la variable "Vrt" en
 
 Esto generara imagenes de cada uno de los test dentro de la carpeta ./results/cypress.
 
-Para realizar la comparación de las prueba ejecutadas siga los siguientes pasos.
+Para realizar la comparación de las pruebas ejecutadas realice lo siguiente:
 
 Ejecute el comando vrt.js en la consola de comandos desde la raiz del proeycto
 
@@ -103,6 +105,8 @@ node vrt.js
 ```
 
 El informe de la prueba se genera en la ruta ./results/index.html
+
+Para las pruebas de regresion visual se utilizo la herramientas ResembleJs.
 
 ## Integrantes
 

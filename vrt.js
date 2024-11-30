@@ -76,25 +76,23 @@ async function executeTest(){
 
 function browser(b, info){
 
-    return `<div class=" browser" id="test0">
+    return `<div class=" browser">
     <div class=" btitle">
-        <h2>Prueba: ${b.name}</h2>
+        <h2>Prueba: ${b.name} ( ${info.misMatchPercentage} % )</h2>
         <p>Data: ${JSON.stringify(info)}</p>
     </div>
     <div class="imgline">
       <div class="imgcontainer">
         <span class="imgname">Navegador ${b.f1}</span>
-        <img class="img2" src="./cypress/${b.f1}/${b.name}" id="refImage" label="Reference">
+        <img src="./cypress/${b.f1}/${b.name}" id="refImage" label="Reference">
       </div>
       <div class="imgcontainer">
         <span class="imgname">Navegador ${b.f2}</span>
-        <img class="img2" src="./cypress/${b.f2}/${b.name}" id="testImage" label="Test">
+        <img src="./cypress/${b.f2}/${b.name}" id="testImage" label="Test">
       </div>
-    </div>
-    <div class="imgline">
       <div class="imgcontainer">
-        <span class="imgname">Diff</span>
-        <img class="imgfull" src="./compare/${b.name}".png" id="diffImage" label="Diff">
+        <span class="imgname">Difference</span>
+        <img src="./compare/${b.name}".png" id="diffImage" label="Diff">
       </div>
     </div>
   </div>`

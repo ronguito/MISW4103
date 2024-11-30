@@ -10,6 +10,6 @@
     "UrlPage": "/ghost/#/pages",
     "UrlMember": "/ghost/#/members",
     "Results": "./results",
-    "Vrt": "port",
+    "Vrt": "",
     "Iterations": 50
 }
