@@ -1,0 +1,8 @@
+[
+    {
+        "description": "e003- Crear un miembro con datos validos",
+        "strategy": "random", 
+        "data": {"name": "person.fullName", "mail": "internet.email" },
+        "type" : "valid"
+    }
+]

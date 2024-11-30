@@ -9,5 +9,7 @@
     "UrlTag": "/ghost/#/tags",
     "UrlPage": "/ghost/#/pages",
     "UrlMember": "/ghost/#/members",
-    "Results": "./results"
+    "Results": "./results",
+    "Vrt": "port",
+    "Iterations": 50
 }

@@ -12,7 +12,11 @@ Cypress.on('uncaught:exception', (err, runnable) => {
 
 Cypress.Commands.add('captureImage', () => {
     const bInfo = Cypress.browser;
-    const bName = bInfo.name;
+    let bName = bInfo.name;
+    const config = Cypress.env('config');
+    if(config.Vrt=="port"){
+        bName = config.Port;
+    }
     screenshotCounter++;  // Incrementar el contador con cada captura
     //const testName = Cypress.currentTest.title.replace(/[^a-zA-Z0-9]/g, '_').slice(0, 6); // Limpiar el nombre del test
     const screenshotName = `${bName}/${currentTestName}_step_${screenshotCounter}`; // Generar el nombre del archivo
@@ -28,7 +32,11 @@ beforeEach(() => {
         screenshotCounter = 0;  // Reiniciar contador al cambiar de escenario
         currentTestName = testName; // Guardar el nombre del escenario actual
         const bInfo = Cypress.browser;
-        const bName = bInfo.name;
+        let bName = bInfo.name;
+        const config = Cypress.env('config');
+        if(config.Vrt=="port"){
+            bName = config.Port;
+        }
         const folder = `./${Cypress.env('config').Results}/cypress/${bName}`;
 
         cy.task('clearScreenshots', [folder, testName] ).then((message) => {

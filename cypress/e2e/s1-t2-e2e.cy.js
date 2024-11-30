@@ -50,7 +50,7 @@ describe('Semana1: Pruebas e2e, genera imagenes para VRT', () => {
         
     });
 
-    /*
+    
     it('t002: Configurar la descripción del sitio', () => {
         const text = faker.company.buzzPhrase();
         //Given
@@ -441,5 +441,5 @@ describe('Semana1: Pruebas e2e, genera imagenes para VRT', () => {
       tag.verifyTagDelete(nameTag3);
 
     }); 
-    */
+    
 });

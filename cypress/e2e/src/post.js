@@ -6,7 +6,6 @@ class Post {
     create (){
         cy.get('a[href="#/editor/post/"]').first().click();
         cy.url().should('include', '/ghost/#/editor/post');
-        cy.captureImage();
     }
 
     save(){
@@ -23,7 +22,6 @@ class Post {
         }else{
             cy.get('button[data-test-button="publish-save"').first().click();
         }
-        cy.captureImage();
         cy.wait(5000);
     }
 
@@ -35,7 +33,6 @@ class Post {
             }
             cy.get('textarea.gh-editor-title').type(title);
         });
-        cy.captureImage();
     }
 
     setTag(tag) {
@@ -47,7 +44,6 @@ class Post {
         cy.get('li').filter((index, element) => {
             return Cypress.$(element).text().includes(tag);
         }).first().click();
-        cy.captureImage();
         cy.get(close).click({ force: true }); 
         cy.wait(1000);
     }
@@ -69,12 +65,10 @@ class Post {
         if(this.Port==2345){
             cy.get('div.gh-publishmenu-trigger').first().click();
             cy.get('button.gh-publishmenu-button').click();
-            cy.captureImage();
             cy.wait(2000);
         }else{
             cy.get('button[data-test-button="publish-flow"').first().click();
             cy.get('button[data-test-button="continue"]').click();
-            cy.captureImage();
             cy.get('button[data-test-button="confirm-publish"]').click();
             cy.url().should('include', '/ghost/#/posts');
             cy.get('button[data-test-button="close-publish-flow"]').click();
@@ -84,9 +78,7 @@ class Post {
     delete(){
         cy.url().should('match', /\/ghost\/#\/editor\/post\/.+/);
         cy.get('button[title="Settings"]').click();// Abrir el menú de opciones del post
-        cy.captureImage();
         cy.get('.settings-menu-delete-button').click();// clic boton en eliminar
-        cy.captureImage();
         cy.get('.gh-btn-red').click(); // Confirmar la eliminación
         cy.url().should('include', '/ghost/#/posts');
 

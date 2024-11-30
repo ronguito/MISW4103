@@ -5,7 +5,6 @@ class Page {
     create (){
         cy.get('a[href="#/editor/page/"]').first().click();
         cy.url().should('include', '/ghost/#/editor/page');
-        cy.captureImage();
     }
 
     save(){
@@ -22,7 +21,6 @@ class Page {
         }else{
             cy.get('button[data-test-button="publish-save"').first().click();
         }
-        cy.captureImage();
         cy.wait(5000);
     }
 
@@ -34,7 +32,6 @@ class Page {
             }
             cy.get('textarea.gh-editor-title').type(title);
         });
-        cy.captureImage();
     }
 
     selectFirst(status){
@@ -77,12 +74,10 @@ class Page {
         if(this.Port==2345){
             cy.get('div.gh-publishmenu-trigger').first().click();
             cy.get('button.gh-publishmenu-button').click();
-            cy.captureImage();
             cy.wait(2000);
         }else{
             cy.get('button[data-test-button="publish-flow"').first().click();
             cy.get('button[data-test-button="continue"]').click();
-            cy.captureImage();
             cy.get('button[data-test-button="confirm-publish"]').click();
             cy.url().should('include', '/ghost/#/pages');
             cy.get('button[data-test-button="close-publish-flow"]').click();
@@ -92,9 +87,7 @@ class Page {
     delete(){
         cy.url().should('match', /\/ghost\/#\/editor\/page\/.+/);
         cy.get('button[title="Settings"]').click();// Abrir el menú de opciones del pagina
-        cy.captureImage();
         cy.get('.settings-menu-delete-button').click();// clic boton en eliminar
-        cy.captureImage();
         cy.get('.gh-btn-red').click(); // Confirmar la eliminación
         cy.url().should('include', '/ghost/#/pages');
     }

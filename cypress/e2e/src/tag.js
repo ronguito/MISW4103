@@ -6,13 +6,11 @@ class Tag {
          
         cy.get('a[href*="#/tags/new/"]').click();
         cy.url().should('include', '/ghost/#/tags/new');
-        cy.captureImage();
     }  
     
     setName (name){ 
         cy.wait(2000);     
         cy.get('#tag-name', { timeout: 5000 }).clear({force:true}).type(name,{force:true});        
-        cy.captureImage();
     } 
 
     getName(){
@@ -46,7 +44,6 @@ class Tag {
     deleteTag(){
         cy.get('button.gh-btn-red').click({ force: true });
         cy.wait(3000);
-        cy.captureImage();
     }  
 
     confirmDeleteTag(){

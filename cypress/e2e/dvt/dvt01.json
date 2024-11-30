@@ -1,0 +1,88 @@
+[
+    {
+        "description": "e001- Crear un miembro con datos validos",
+        "strategy": "priori", 
+        "data": {"name": "Frank Kafka", "mail": "frank@gmail.com" },
+        "type" : "valid"
+    },
+    {
+        "description": "e002- Crear un miembro con datos validos",
+        "strategy": "pool", 
+        "data": [
+            {"name": "Frank Kafka", "mail": "frank@gmail.com" },
+            {"name": "Juan Tapia", "mail": "juan@gmail.com" },
+            {"name": "Pedro Florex", "mail": "pedro@gmail.com" },
+            {"name": "Maria Duarte", "mail": "maria@gmail.com" },
+            {"name": "Raul Ramos", "mail": "raul@gmail.com" },
+            {"name": "Sergio Gelves", "mail": "sergio@gmail.com" },
+            {"name": "Calletana Lopex", "mail": "calletana@gmail.com" }
+        ],
+        "type" : "valid"
+    },
+    {
+        "description": "e003- Crear un miembro con datos validos",
+        "strategy": "random", 
+        "data": {"name": "person.fullName", "mail": "internet.email" },
+        "type" : "valid"
+    },
+    {
+        "description": "e004- Crear suscriptor con nombre inválido y correo válido",
+        "strategy": "priori", 
+        "data": {"name": "1234 2344", "mail": "frank@gmail.com" },
+        "type" : "valid"
+    },
+    {
+        "description": "e005- Crear suscriptor con nombre inválido y correo válido",
+        "strategy": "pool", 
+        "data": [
+            {"name": "1245", "mail": "frank@gmail.com" },
+            {"name": "6789", "mail": "juan@gmail.com" },
+            {"name": "$909", "mail": "pedro@gmail.com" },
+            {"name": "<>!00", "mail": "maria@gmail.com" },
+            {"name": "%%&%", "mail": "raul@gmail.com" },
+            {"name": "-18+2", "mail": "sergio@gmail.com" },
+            {"name": "''Nombre''", "mail": "calletana@gmail.com" }
+        ],
+        "type" : "valid"
+    },
+    {
+        "description": "e006- Crear suscriptor con nombre inválido y correo válido",
+        "strategy": "random", 
+        "data": {"name": "number.int", "mail": "internet.email" },
+        "type" : "valid"
+    },
+    {
+        "description": "e007- Crear suscriptor con nombre inválido y correo inválido",
+        "strategy": "priori", 
+        "data": {"name": "Juan Tapia", "mail": "$$$$$@gmail.com" },
+        "type" : "invalid"
+    },
+    {
+        "description": "e008- Crear suscriptor con nombre válido y correo con carácteres especiales",
+        "strategy": "pool", 
+        "data": [
+            {"name": "Frank Kafka", "mail": "#$%&$%@gmail.com" },
+            {"name": "Juan Tapia", "mail": "1298<<<@gmail.com" },
+            {"name": "Pedro Florex", "mail": " p. florex@gmail.com" },
+            {"name": "Maria Duarte", "mail": "ma$19@gmail.com" },
+            {"name": "Raul Ramos", "mail": "r-ramos@gmail.com" },
+            {"name": "Sergio Gelves", "mail": "sergio@gmail.com" },
+            {"name": "Calletana Lopex", "mail": "calle22#@gmail.com" }
+        ],
+        "type" : "invalid"
+    },
+    {
+        "description": "e009- Crear suscriptor con nombre válido y correo dmonio invalido",
+        "strategy": "pool", 
+        "data": [
+            {"name": "Frank Kafka", "mail": "frank@gmail.c1" },
+            {"name": "Juan Tapia", "mail": "juan@$mail.com" },
+            {"name": "Pedro Florex", "mail": "pedro@mail.##" },
+            {"name": "Maria Duarte", "mail": "maria@123.com" },
+            {"name": "Raul Ramos", "mail": "raul@_mail.com" },
+            {"name": "Sergio Gelves", "mail": "sergio@ mail.com" },
+            {"name": "Calletana Lopex", "mail": "calletana@<mail>.com" }
+        ],
+        "type" : "invalid" 
+    }
+]

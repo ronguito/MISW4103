@@ -13,25 +13,20 @@ class Webpage {
         cy.visit(urlPage, { failOnStatusCode: false });
         cy.url().should('include', urlPage);
         cy.wait(5000);
-        cy.captureImage();
     }
 
     login (username, password){
         cy.get('input[name="identification"]', {timeout:5000}).type(username);
         cy.get('input[name="password"]', {timeout:5000}).type(password);
-        cy.captureImage();
         cy.get('button[type="submit"]').click();
         cy.wait(8000);
         cy.url().should('include', '/ghost/#/dashboard');
-        cy.captureImage();
     }
 
     openSiteSetting(){
         cy.get('a[href="#/settings/"]').first().click();
         cy.url().should('include', '/ghost/#/settings');  
         cy.wait(5000);  
-        cy.captureImage(); 
-        
     }
 
     closeSiteSetting(){
@@ -69,7 +64,6 @@ class Webpage {
         }else{
             cy.get('input[placeholder="Site title"]').clear().type(text);
         }
-        cy.captureImage(); 
     }
 
     setPageDescription(text){
@@ -83,7 +77,6 @@ class Webpage {
         }else{
             cy.get('input[placeholder="Site description"]').clear().type(text);
         }
-        cy.captureImage();
     }
 
     clickOnButton(accion, wait=5000)
@@ -114,7 +107,6 @@ class Webpage {
     clickOnPanel(name){
         cy.get(`button[title="${name}"]`).click();
         cy.wait(2000);
-        cy.captureImage(); 
     }
 
     clickOnPickColor(){

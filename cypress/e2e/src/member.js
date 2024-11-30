@@ -7,7 +7,6 @@ class Member {
         cy.wait(5000)
         cy.get('a[href="#/members/new/"]', {timeout:5000}).first().click();
         cy.url().should('include', '/ghost/#/members/new');
-        cy.captureImage();
     }
 
     editFirstMember (){
@@ -32,8 +31,6 @@ class Member {
                     cy.log('El campo "member-name" no está disponible');
                 }
             });
-        cy.captureImage();
-       
     }
 
     setEmail(email){
@@ -41,7 +38,6 @@ class Member {
             .should('exist')
             .clear({force:true})
             .type(email,{force:true});
-        cy.captureImage();
     }
 
 
@@ -71,7 +67,6 @@ class Member {
                 return Cypress.$(element).text().includes(msg); 
             }).first();
         });
-        cy.captureImage();
     }
 
     deleteMember(){
