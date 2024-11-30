@@ -13,7 +13,8 @@ el comportamiento de la interfaz de usuario.
 ## Prerequisitos
 
 - Contar con una instalacion de Ghost de manera local.
-- Haber configurado manualmente una cuenta en ghost
+- Haber configurado manualmente una cuenta en ghost.
+- Tener conocimientos minimos de la interfaz interactiva de cypress.
 
 ## Instalación de las pruebas
 
@@ -67,10 +68,12 @@ Iterations: Es el numero de iteraciones que se realizaran en las pruebas explora
 
 Para las diferentes pruebas se codificaron los siguientes escripst de cypress.
 
-1. s1-t1-aet.cy.js -> Pruebas exploratorias
-2. s1-t2-e2e.cy.js -> Pruebas de extremo a extremo
-3. s1-t3-vrt.cy.js -> Pruebas de regresion visual
-4. s1-t4-dvt.cy.js -> Pruebas de validacion de datos
+| Tipo de Prueba                 | Script          |
+| ------------------------------ | --------------- |
+| Pruebas exploratorias          | s1-t1-aet.cy.js |
+| Pruebas de extremo a extremo   | s1-t2-e2e.cy.js |
+| Pruebas de regresion visual    | s1-t3-vrt.cy.js |
+| Pruebas de validacion de datos | s1-t4-dvt.cy.js |
 
 Las pruebas se puede ejecutar de dos modos diferentes, el modo interactivo y el modo headless, si ejecuta las pruebas en modo interactivo debe seleccionar el script que desea ejecutar en la ventana de la herramienta de pruebas.
 Si ejecuta la prueba en modo headless esta corre todos los scripts configurados.
