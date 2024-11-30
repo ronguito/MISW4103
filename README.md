@@ -106,6 +106,8 @@ node vrt.js
 
 El informe de la prueba se genera en la ruta ./results/index.html
 
+Para las pruebas de regresion visual se utilizo la herramientas ResembleJs.
+
 ## Integrantes
 
 | Nombre          | Correo                      |
